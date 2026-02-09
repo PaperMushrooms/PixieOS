@@ -20,7 +20,7 @@ with lib; {
 
     home.packages = [
       (pkgs.writeShellScriptBin "commit" ''
-        read -p "Enter commit message: " message
+        read -r -p "Enter commit message: " message
 
         if [ -z $message ]; then
             echo "Commit message cannot be empty!"
