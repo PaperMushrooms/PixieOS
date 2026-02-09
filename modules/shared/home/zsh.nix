@@ -20,7 +20,7 @@ with lib; {
 
         # Zsh Aliases
         shellAliases = {
-          upload = "git add . && git commit -m 'Update' && git push -u origin main";
+          commit = "git add . && read -r -p 'Enter commit message: ' message && git commit -m $message && git push -u origin main";
           update = "nix flake update --flake .";
           cleanup = "nix-collect-garbage -d";
           cleanup-full = "sudo nix-collect-garbage -d";
