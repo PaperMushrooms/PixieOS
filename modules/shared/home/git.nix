@@ -17,5 +17,20 @@ with lib; {
         init.defaultBranch = "main";
       };
     };
+
+    home.packages = [
+      (pkgs.writeShellScriptBin "commit" ''
+        read -p "Enter commit message: " message
+
+        if [ -z $message ]; then
+            echo "Commit message cannot be empty!"
+            exit 1
+        fi
+
+        git add .
+        git commit -m "$message"
+        git push -u origin main
+      '')
+    ];
   };
 }
