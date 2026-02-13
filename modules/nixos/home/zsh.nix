@@ -6,10 +6,10 @@
 }:
 with lib; {
   options = {
-    alienix.home.shell.enable = mkEnableOption "Enable and configure my terminal setup";
+    pixieos.home.shell.enable = mkEnableOption "Enable and configure my terminal setup";
   };
 
-  config = mkIf config.alienix.home.shell.enable {
+  config = mkIf config.pixieos.home.shell.enable {
     # Enable and Configure Zsh
     programs = {
       zsh = {

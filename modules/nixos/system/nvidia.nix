@@ -1,8 +1,14 @@
-{ config, inputs, pkgs, lib, ... }: with lib; {
+{
+  config,
+  inputs,
+  pkgs,
+  lib,
+  ...
+}:
+with lib; {
+  options = {pixieos.system.graphics.nvidia.enable = mkEnableOption "Enable Nvidia Graphics Compatibility";};
 
-  options = { alienix.system.graphics.nvidia.enable = mkEnableOption "Enable Nvidia Graphics Compatibility"; };
-
-  config = mkIf config.alienix.system.graphics.nvidia.enable {
+  config = mkIf config.pixieos.system.graphics.nvidia.enable {
     # System Configuration
     hardware = {
       graphics.enable = true;
@@ -21,6 +27,6 @@
     };
 
     # Enable Nvidia Drivers
-    services.xserver.videoDrivers = [ "nvidia" ];
+    services.xserver.videoDrivers = ["nvidia"];
   };
 }

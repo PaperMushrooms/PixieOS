@@ -1,11 +1,15 @@
-{ inputs, config, pkgs, lib, ... }:
-
 {
+  inputs,
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   imports = [
     ./hardware-configuration.nix
     ./options.nix
   ];
 
   # Set the hostname.
-  networking.hostName = "alienix"; # Define your hostname.
+  networking.hostName = "pixieos"; # Define your hostname.
 }

@@ -11,9 +11,9 @@ with lib; {
     ./server-mods.nix
   ];
 
-  options = {alienix.system.gaming.minecraft.servers.fabric-1_21_1.enable = mkEnableOption "Enable Minecraft Server";};
+  options = {pixieos.system.gaming.minecraft.servers.fabric-1_21_1.enable = mkEnableOption "Enable Minecraft Server";};
 
-  config = mkIf config.alienix.system.gaming.minecraft.servers.fabric-1_21_1.enable {
+  config = mkIf config.pixieos.system.gaming.minecraft.servers.fabric-1_21_1.enable {
     nixpkgs.overlays = [inputs.nix-minecraft.overlay];
 
     environment.systemPackages = with pkgs; [

@@ -1,17 +1,18 @@
-{ config
-, lib
-, pkgs
-, ...
+{
+  config,
+  lib,
+  pkgs,
+  ...
 }:
 with lib; {
   options = {
-    alienix.system.virtualisation.enable =
+    pixieos.system.virtualisation.enable =
       mkEnableOption "Enable Virtualisation module for virtual machines";
   };
 
-  config = mkIf config.alienix.system.virtualisation.enable {
+  config = mkIf config.pixieos.system.virtualisation.enable {
     programs.virt-manager.enable = true;
-    users.groups.libvirtd.members = [ "dex" ];
+    users.groups.libvirtd.members = ["dex"];
     virtualisation.waydroid.enable = true;
     virtualisation.libvirtd.enable = true;
     virtualisation.libvirtd.qemu.swtpm.enable = true;

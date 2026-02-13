@@ -5,9 +5,9 @@
   ...
 }:
 with lib; {
-  options = {alienix.home.git.enable = mkEnableOption "Enables Git";};
+  options = {pixieos.home.git.enable = mkEnableOption "Enables Git";};
 
-  config = mkIf config.alienix.home.git.enable {
+  config = mkIf config.pixieos.home.git.enable {
     # Enable and Configure Git
     programs.git = {
       enable = true;

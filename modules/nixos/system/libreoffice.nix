@@ -1,8 +1,13 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 with lib; {
-  options = { alienix.system.libreoffice.enable = mkEnableOption "Enable LibreOffice"; };
+  options = {pixieos.system.libreoffice.enable = mkEnableOption "Enable LibreOffice";};
 
-  config = mkIf config.alienix.system.libreoffice.enable {
-    environment.systemPackages = with pkgs; [ libreoffice-qt hunspell ];
+  config = mkIf config.pixieos.system.libreoffice.enable {
+    environment.systemPackages = with pkgs; [libreoffice-qt hunspell];
   };
 }

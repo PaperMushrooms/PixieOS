@@ -1,5 +1,5 @@
 {
-  alienix.home = {
+  pixieos.home = {
     hyprland.enable = true;
     vscodium.enable = true;
     firefox.enable = true;

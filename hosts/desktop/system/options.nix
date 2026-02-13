@@ -1,5 +1,5 @@
 {
-  alienix.system = {
+  pixieos.system = {
     asus.enable = true;
     graphics.nvidia.enable = true;
     hyprland.enable = true;

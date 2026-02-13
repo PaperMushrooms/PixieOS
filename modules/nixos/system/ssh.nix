@@ -1,15 +1,16 @@
-{ config
-, lib
-, pkgs
-, ...
+{
+  config,
+  lib,
+  pkgs,
+  ...
 }:
 with lib; {
-  options = { alienix.system.ssh.enable = mkEnableOption "Enables SSH"; };
+  options = {pixieos.system.ssh.enable = mkEnableOption "Enables SSH";};
 
-  config = mkIf config.alienix.system.ssh.enable {
+  config = mkIf config.pixieos.system.ssh.enable {
     services.openssh = {
       enable = true;
-      ports = [ 44906 ];
+      ports = [44906];
       settings = {
         PasswordAuthentication = false;
         UseDns = true;
@@ -32,7 +33,7 @@ with lib; {
           IdentityFile ~/.ssh/GitHub
           IdentitiesOnly yes
 
-        Host alienix
+        Host pixieos
           User dex
           Port 44906
           IdentityFile ~/.ssh/nixathon
