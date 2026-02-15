@@ -1,5 +1,4 @@
 {
-  ##TEST
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     # nixpkgs.url = "github:NixOS/nixpkgs?ref=master";
@@ -108,110 +107,10 @@
         ];
       };
 
-      laptop = nixpkgs.lib.nixosSystem {
-        system = "x86-linux";
-
-        specialArgs = {inherit inputs;};
-
-        modules = [
-          ./hosts/laptop/system
-          ./modules/nixos/system
-
-          home-manager.nixosModules.home-manager
-          stylix.nixosModules.stylix
-          nix-flatpak.nixosModules.nix-flatpak
-
-          {
-            home-manager = {
-              useUserPackages = true;
-              backupFileExtension = "backup";
-              sharedModules = [
-                plasma-manager.homeModules.plasma-manager
-                nvf.homeManagerModules.default
-                nixcord.homeModules.nixcord
-              ];
-
-              extraSpecialArgs = {inherit inputs;};
-              users.dex.imports = [
-                ./hosts/laptop/home
-                ./modules/shared/home
-              ];
-            };
-          }
-        ];
-      };
-
-      wsl = nixpkgs.lib.nixosSystem {
-        system = "x86-linux";
-
-        specialArgs = {inherit inputs;};
-
-        modules = [
-          ./hosts/wsl/system
-          ./modules/nixos/system
-
-          home-manager.nixosModules.home-manager
-          stylix.nixosModules.stylix
-
-          {
-            home-manager = {
-              useUserPackages = true;
-              backupFileExtension = "backup";
-              sharedModules = [
-                plasma-manager.homeModules.plasma-manager
-                nvf.homeManagerModules.default
-                nixcord.homeModules.nixcord
-              ];
-
-              extraSpecialArgs = {inherit inputs;};
-              users.dex.imports = [
-                ./hosts/laptop/home
-              ];
-            };
-          }
-        ];
-      };
-
       recovery = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
         modules = [./recovery/configuration.nix];
       };
-    };
-
-    darwinConfigurations."darwin" = nix-darwin.lib.darwinSystem {
-      system = "aarch64-darwin";
-      modules = [
-        ./hosts/darwin/system
-
-        home-manager.darwinModules.home-manager
-        stylix.darwinModules.stylix
-        nix-homebrew.darwinModules.nix-homebrew
-
-        {
-          nix-homebrew = {
-            enable = true;
-            enableRosetta = true;
-            user = "matthew";
-
-            taps = {
-              "homebrew/homebrew-core" = homebrew-core;
-              "homebrew/homebrew-cask" = homebrew-cask;
-            };
-
-            mutableTaps = false;
-          };
-
-          home-manager = {
-            useUserPackages = true;
-            sharedModules = [nvf.homeManagerModules.default];
-
-            extraSpecialArgs = {inherit inputs;};
-            users.matthew.imports = [
-              ./hosts/darwin/home
-            ];
-          };
-        }
-      ];
     };
   };
 }
