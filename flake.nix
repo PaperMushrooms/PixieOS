@@ -73,8 +73,8 @@
     stylix,
     ...
   } @ inputs: {
-    nixosConfigurations = {
-      default = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.default = {
+      nixpkgs.lib.nixosSystem {
         system = "x86-linux";
 
         specialArgs = {inherit inputs;};
@@ -100,12 +100,13 @@
               extraSpecialArgs = {inherit inputs;};
               users.dex.imports = [
                 ./hosts/desktop/home
-                ./modules/shared/home
+                ./modules/nixos/home
               ];
             };
           }
         ];
       };
+        };
 
       recovery = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};

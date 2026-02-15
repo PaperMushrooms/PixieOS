@@ -17,10 +17,4 @@
       };
     };
   };
-
-  # Enable Gnome System-Level Configuration
-  gnomesys.enable = true;
-
-  # Enable Plasma6 System-Level Configuration
-  plasmasys.enable = true;
 }
