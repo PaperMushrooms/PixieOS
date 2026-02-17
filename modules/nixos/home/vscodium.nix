@@ -1,13 +1,8 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ config, lib, pkgs, ... }:
 with lib; {
-  options = {pixieos.home.vscodium.enable = mkEnableOption "enables VSCodium";};
+  options = { alienix.home.vscodium.enable = mkEnableOption "enables VSCodium"; };
 
-  config = mkIf config.pixieos.home.vscodium.enable {
+  config = mkIf config.alienix.home.vscodium.enable {
     # Configure VScodium
     programs.vscode = {
       enable = true;

@@ -1,31 +1,26 @@
 {
   imports = [
-    ../home/desktop/hyprland/hypr.nix
-    ./asus.nix
-    ./desktop.nix
-    ./minecraft
-    ./roblox.nix
-    ./virtualisation.nix
-    ./audio.nix
+    ./config.nix
+    ./users.nix
+    ./packages.nix
     ./displaymanager.nix
     ./nvidia.nix
     ./ssh.nix
-    ./vpn.nix
-    ./bootloader.nix
-    ./gaming.nix
-    ./packages.nix
     ./stylix.nix
-    ./config.nix
-    ./gnome.nix
-    ./plasma.nix
     ./time-and-date.nix
-    ./default.nix
+    ./audio.nix
+    ./vpn.nix
     ./graphics.nix
-    ./player2api.nix
-    ./tmux.nix
-    ./desktop
+    ./gaming.nix
+    ./minecraft
+    ./roblox.nix
+    ./asus.nix
+    ./bootloader.nix
+    ./plasma.nix
+    ./virtualisation.nix
+    ../home/desktop/hyprland/hypr.nix
+    ./gnome.nix
     ./libreoffice.nix
     ./qflipper.nix
-    ./users.nix
   ];
 }

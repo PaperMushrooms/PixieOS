@@ -5,9 +5,9 @@
   ...
 }:
 with lib; {
-  options = {pixieos.system.ssh.enable = mkEnableOption "Enables SSH";};
+  options = {alienix.system.ssh.enable = mkEnableOption "Enables SSH";};
 
-  config = mkIf config.pixieos.system.ssh.enable {
+  config = mkIf config.alienix.system.ssh.enable {
     services.openssh = {
       enable = true;
       ports = [44906];
@@ -25,15 +25,15 @@ with lib; {
       extraConfig = ''
         Host github.com
           User git
-          IdentityFile ~/.ssh/GitHub
+          IdentityFile ~/.ssh/homelab
           IdentitiesOnly yes
 
         Host gitlab.com
           User git
-          IdentityFile ~/.ssh/GitHub
+          IdentityFile ~/.ssh/homelab
           IdentitiesOnly yes
 
-        Host pixieos
+        Host alienix
           User dex
           Port 44906
           IdentityFile ~/.ssh/nixathon

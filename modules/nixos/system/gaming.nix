@@ -1,13 +1,8 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ config, lib, pkgs, ... }:
 with lib; {
-  options = {pixieos.system.gaming.enable = mkEnableOption "Enable Gaming Compatibility";};
+  options = { alienix.system.gaming.enable = mkEnableOption "Enable Gaming Compatibility"; };
 
-  config = mkIf config.pixieos.system.gaming.enable {
+  config = mkIf config.alienix.system.gaming.enable {
     # Enable Steam
     programs.steam = {
       enable = true;
@@ -47,11 +42,12 @@ with lib; {
       winetricks
     ];
 
-    nixpkgs.config.permittedInsecurePackages = ["openssl-1.1.1w"];
+    nixpkgs.config.permittedInsecurePackages = [ "openssl-1.1.1w" ];
 
     # Configure Steam path for ProtonGE
     environment.sessionVariables = {
-      STEAM_EXTRA_COMPAT_TOOLS_PATHS = "/home/user/.steam/root/compatibilitytools.d";
+      STEAM_EXTRA_COMPAT_TOOLS_PATHS =
+        "/home/user/.steam/root/compatibilitytools.d";
     };
 
     # System Configuration
@@ -75,6 +71,6 @@ with lib; {
     programs.gamemode.enable = true;
 
     # Enable Modern Drivers
-    services.xserver.videoDrivers = ["radeon" "amdgpu" "nvidia"];
+    services.xserver.videoDrivers = [ "radeon" "amdgpu" "nvidia" ];
   };
 }

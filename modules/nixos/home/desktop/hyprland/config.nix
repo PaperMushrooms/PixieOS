@@ -14,10 +14,10 @@ with lib; {
   ];
 
   options = {
-    pixieos.home.hyprland.enable = mkEnableOption "Enable Hyprland Home-Manager settings";
+    alienix.home.hyprland.enable = mkEnableOption "Enable Hyprland Home-Manager settings";
   };
 
-  config = mkIf config.pixieos.home.hyprland.enable {
+  config = mkIf config.alienix.home.hyprland.enable {
     # Hyprland Configuration
     wayland.windowManager.hyprland = {
       enable = true;

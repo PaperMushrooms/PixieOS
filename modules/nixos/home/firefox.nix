@@ -1,16 +1,13 @@
-{
-  inputs,
-  config,
-  lib,
-  pkgs,
-  ...
-}:
-with lib; let
-  addons = inputs.firefox-addons.packages.${pkgs.stdenv.hostPlatform.system};
-in {
-  options = {pixieos.home.firefox.enable = mkEnableOption "Enable and Configure Firefox";};
+{ inputs, config, lib, pkgs, ... }: with lib;
 
-  config = mkIf config.pixieos.home.firefox.enable {
+let
+  addons = inputs.firefox-addons.packages.${pkgs.stdenv.hostPlatform.system};
+in
+
+{
+  options = { alienix.home.firefox.enable = mkEnableOption "Enable and Configure Firefox"; };
+
+  config = mkIf config.alienix.home.firefox.enable {
     # Web Browser Configuration
 
     # Configure Firefox
@@ -30,31 +27,31 @@ in {
             settings = [
               {
                 name = "Gmail";
-                tags = ["Email"];
+                tags = [ "Email" ];
                 keyword = "gmail";
                 url = "https://mail.google.com/";
               }
               {
                 name = "Google Drive";
-                tags = ["Cloud"];
+                tags = [ "Cloud" ];
                 keyword = "drive";
                 url = "https://drive.google.com/";
               }
               {
                 name = "Ebay";
-                tags = ["Shopping"];
+                tags = [ "Shopping" ];
                 keyword = "drive";
                 url = "https://www.ebay.com/";
               }
               {
                 name = "ChatGPT";
-                tags = ["Artificial Intelligence"];
+                tags = [ "Artificial Intelligence" ];
                 keyword = "GPT";
                 url = "https://chatgpt.com/";
               }
               {
                 name = "GitHub";
-                tags = ["Development"];
+                tags = [ "Development" ];
                 keyword = "Git";
                 url = "https://github.com/";
               }
@@ -63,31 +60,31 @@ in {
                 bookmarks = [
                   {
                     name = "Gmail";
-                    tags = ["Email"];
+                    tags = [ "Email" ];
                     keyword = "gmail";
                     url = "https://mail.google.com/";
                   }
                   {
                     name = "Google Drive";
-                    tags = ["Cloud"];
+                    tags = [ "Cloud" ];
                     keyword = "drive";
                     url = "https://drive.google.com/";
                   }
                   {
                     name = "Ebay";
-                    tags = ["Shopping"];
+                    tags = [ "Shopping" ];
                     keyword = "drive";
                     url = "https://www.ebay.com/";
                   }
                   {
                     name = "ChatGPT";
-                    tags = ["Artificial Intelligence"];
+                    tags = [ "Artificial Intelligence" ];
                     keyword = "GPT";
                     url = "https://chatgpt.com/";
                   }
                   {
                     name = "GitHub";
-                    tags = ["Development"];
+                    tags = [ "Development" ];
                     keyword = "Git";
                     url = "https://github.com/";
                   }
