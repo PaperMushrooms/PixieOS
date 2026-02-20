@@ -1,14 +1,14 @@
-{ pkgs
-, config
-, lib
-, ...
+{
+  pkgs,
+  config,
+  lib,
+  ...
 }: {
   imports = [
     ./ssh.nix
-    ./stylix.nix
   ];
 
-  environment.systemPackages = with pkgs; [ discord sshfs notion-app ];
+  environment.systemPackages = with pkgs; [discord sshfs notion-app];
 
   nixpkgs.config = {
     hostPlatform = "aarch64-darwin";
@@ -18,11 +18,11 @@
 
   security.pam.services.sudo_local.touchIdAuth = true;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   homebrew = {
     enable = true;
-    casks = [ "rustdesk" "qflipper" "firefox" "bambu-studio" "vscodium" "macfuse" ];
+    casks = ["rustdesk" "qflipper" "firefox" "bambu-studio" "vscodium" "macfuse"];
   };
 
   users.users.matthew = {
