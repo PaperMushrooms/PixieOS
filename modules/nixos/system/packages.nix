@@ -11,6 +11,9 @@
     kdePackages.dolphin
     anydesk
     bat
+    ripgrep
+    nh
+    nix-output-monitor
     gimp # Photo Editor
     #   ungoogled-chromium # Web Browser
     telegram-desktop # Private Messenger

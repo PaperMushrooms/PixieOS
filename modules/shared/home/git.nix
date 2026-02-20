@@ -20,6 +20,7 @@ with lib; {
 
     home.packages = [
       pkgs.github-desktop
+      pkgs.lazygit
 
       (pkgs.writeShellScriptBin "commit" ''
         read -r -p "Enter commit message: " message

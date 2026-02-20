@@ -21,13 +21,12 @@ with lib; {
         # Zsh Aliases
         shellAliases = {
           update = "nix flake update --flake .";
+          test = "nh os test .";
+          build = "nh os build .";
+          switch = "nh os switch .";
           cleanup = "nix-collect-garbage -d";
           cleanup-full = "sudo nix-collect-garbage -d";
           mkrecovery = "nix build .#nixosConfigurations.recovery.config.system.build.isoImage";
-
-          SDlab = "nix-shell shells/PoGo-Root";
-
-          format = "nix-shell -p nixpkgs-fmt --run 'nixpkgs-fmt .'";
         };
 
         initContent = ''
