@@ -70,7 +70,9 @@
     darwinConfigurations."Matthews-MacBook-Air" = nix-darwin.lib.darwinSystem {
       specialArgs = {inherit inputs;};
       modules = [
-        {
+          home-manager.nixosModules.home-manager
+          stylix.nixosModules.stylix
+	{
           nix.settings.experimental-features = "nix-command flakes";
           system.configurationRevision = self.rev or self.dirtyRev or null;
           system.stateVersion = 6;
